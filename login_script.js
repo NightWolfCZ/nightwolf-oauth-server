@@ -1,3 +1,27 @@
+const rawOrigins = process.env.ORIGINS;
+
+if (typeof rawOrigins !== 'string') {
+  throw new Error('process.env.ORIGINS must be defined as a string');
+}
+
+console.log('Loaded ORIGINS:', rawOrigins);
+
+const origins = rawOrigins
+  .split(',')
+  .map(origin => origin.trim())
+  .filter(origin => origin.length > 0);
+
+// Regex pro https://domenu.tld i http://localhost
+const originRegex = /^https:\/\/([\w-]+\.)+[\w-]+$|^http:\/\/localhost:\d+$/;
+
+const invalidOrigins = origins.filter(origin => !originRegex.test(origin));
+
+if (invalidOrigins.length > 0) {
+  console.error('Invalid origins detected:', invalidOrigins);
+  throw new Error(`Invalid origin(s): ${invalidOrigins.join(', ')}`);
+}
+
+
 const REQUIRED_ORIGIN_PATTERN = 
   /^https:\/\/([\w_-]+\.)+[\w_-]+(,https:\/\/([\w_-]+\.)+[\w_-]+)*$/
 
