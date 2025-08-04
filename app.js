@@ -15,6 +15,5 @@ app.get('/callback', middleWarez.callback)
 app.get('/success', middleWarez.success)
 app.get('/', middleWarez.index)
 
-app.listen(port, () => {
-  console.log("Netlify CMS OAuth provider listening on port " + port)
-})
+module.exports = app
+
