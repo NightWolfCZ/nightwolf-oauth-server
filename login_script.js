@@ -1,5 +1,6 @@
 const REQUIRED_ORIGIN_PATTERN = 
-  /^((\*|([\w_-]{2,}))\.)*(([\w_-]{2,})\.)+(\w{2,})(\,((\*|([\w_-]{2,}))\.)*(([\w_-]{2,})\.)+(\w{2,}))*$/
+  /^https:\/\/([\w_-]+\.)+[\w_-]+(,https:\/\/([\w_-]+\.)+[\w_-]+)*$/
+
 console.log('Loaded ORIGINS:', process.env.ORIGINS)
 
 if (
