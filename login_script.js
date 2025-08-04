@@ -8,7 +8,7 @@ console.log('Loaded ORIGINS:', rawOrigins);
 
 const origins = rawOrigins
   .split(',')
-  .map(origin => origin.trim())
+  .map(origin => origin.trim().replace(/\/$/, '')) // odstraní koncové /
   .filter(origin => origin.length > 0);
 
 // Regex: https://doména.cz nebo http://localhost:PORT
