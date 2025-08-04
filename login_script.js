@@ -1,5 +1,6 @@
 const REQUIRED_ORIGIN_PATTERN = 
   /^((\*|([\w_-]{2,}))\.)*(([\w_-]{2,})\.)+(\w{2,})(\,((\*|([\w_-]{2,}))\.)*(([\w_-]{2,})\.)+(\w{2,}))*$/
+console.log('Loaded ORIGINS:', process.env.ORIGINS)
 
 if (
   typeof process.env.ORIGINS !== 'string' ||
